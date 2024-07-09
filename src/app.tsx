@@ -13,6 +13,8 @@ import { FormEvent, useState } from "react";
 export function App() {
   const [isGuestsInputOpen, setIsGuestsInputOpen] = useState(false);
   const [isGuestsModalOpen, setIsGuestsModalOpen] = useState(false);
+
+  const [email, setEmail] = useState("");
   const [emailsToInvite, setEmailsToInvite] = useState<string[]>([
     "okayosilva@github.com",
   ]);
@@ -20,22 +22,20 @@ export function App() {
   function toggleGuestsInput() {
     setIsGuestsInputOpen((prevState) => !prevState);
   }
-
+  
   function toggleGuestsModalOpen() {
     setIsGuestsModalOpen((prevState) => !prevState);
   }
 
   function addNewEmailToInvite(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    const email = data.get("email") as string;
 
     if (emailsToInvite.includes(email) || !email) {
       return;
     }
 
     setEmailsToInvite((prevState) => [...prevState, email]);
-    event.currentTarget.reset();
+    setEmail("");
   }
 
   function removeEmailToInvite(email: string) {
@@ -176,7 +176,8 @@ export function App() {
                 <input
                   className="bg-transparent text-lg text-zinc-300 flex-1 outline-none"
                   type="email"
-                  name="email"
+                  value={email}
+                  onChange={(event) => setEmail(event.target.value)}
                   placeholder="Digite o e-mail do convidado"
                 />
               </div>
