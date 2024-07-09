@@ -22,7 +22,7 @@ export function App() {
   function toggleGuestsInput() {
     setIsGuestsInputOpen((prevState) => !prevState);
   }
-  
+
   function toggleGuestsModalOpen() {
     setIsGuestsModalOpen((prevState) => !prevState);
   }
@@ -46,21 +46,21 @@ export function App() {
     // );
   }
   return (
-    <div className="h-screen flex items-center justify-center bg-pattern bg-no-repeat bg-center">
-      <div className="max-w-3xl w-full px-6 text-center space-y-10">
-        <div className="flex flex-col justify-center items-center gap-3">
+    <div className="flex h-screen items-center justify-center bg-pattern bg-center bg-no-repeat">
+      <div className="w-full max-w-3xl space-y-10 px-6 text-center">
+        <div className="flex flex-col items-center justify-center gap-3">
           <img src="/logo.svg" alt="logo" />
-          <p className="text-zinc-300 text-lg">
+          <p className="text-lg text-zinc-300">
             Convide seus amigos e planeje sua próxima viagem!
           </p>
         </div>
 
         <div className="space-y-4">
-          <div className="h-16 bg-zinc-900 px-4 rounded-xl flex items-center shadow-shape gap-3">
+          <div className="flex h-16 items-center gap-3 rounded-xl bg-zinc-900 px-4 shadow-shape">
             <div className="flex flex-1 items-center gap-2">
               <MapPin className="size-5 text-zinc-400" />
               <input
-                className="bg-transparent text-lg placeholder-zinc-400 outline-none flex-1"
+                className="flex-1 bg-transparent text-lg placeholder-zinc-400 outline-none"
                 type="text"
                 placeholder="Para onde você vai?"
                 disabled={isGuestsInputOpen}
@@ -69,19 +69,19 @@ export function App() {
             <div className="flex items-center gap-2">
               <Calendar className="size-5 text-zinc-400" />
               <input
-                className=" bg-transparent text-lg placeholder-zinc-400 w-40 outline-none"
+                className="w-40 bg-transparent text-lg placeholder-zinc-400 outline-none"
                 type="text"
                 placeholder="Quando?"
                 disabled={isGuestsInputOpen}
               />
             </div>
 
-            <div className="w-px bg-zinc-800 h-6"></div>
+            <div className="h-6 w-px bg-zinc-800"></div>
 
             {isGuestsInputOpen ? (
               <button
                 onClick={toggleGuestsInput}
-                className="bg-zinc-800 text-zinc-200 rounded-lg px-5 py-2 font-medium flex items-center gap-2 hover:bg-zinc-700 transition-colors"
+                className="flex items-center gap-2 rounded-lg bg-zinc-800 px-5 py-2 font-medium text-zinc-200 transition-colors hover:bg-zinc-700"
               >
                 Alterar local/data
                 <Settings2 className="size-5" />
@@ -89,7 +89,7 @@ export function App() {
             ) : (
               <button
                 onClick={toggleGuestsInput}
-                className="bg-lime-300 text-lime-950 rounded-lg px-5 py-2 font-medium flex items-center gap-2 hover:bg-lime-400 transition-colors"
+                className="flex items-center gap-2 rounded-lg bg-lime-300 px-5 py-2 font-medium text-lime-950 transition-colors hover:bg-lime-400"
               >
                 Continuar
                 <ArrowRight className="size-5" />
@@ -98,10 +98,10 @@ export function App() {
           </div>
 
           {isGuestsInputOpen && (
-            <div className="h-16 bg-zinc-900 px-4 rounded-xl flex items-center shadow-shape gap-3">
+            <div className="flex h-16 items-center gap-3 rounded-xl bg-zinc-900 px-4 shadow-shape">
               <button
                 onClick={toggleGuestsModalOpen}
-                className="bg-transparent outline-none flex flex-1 items-center gap-2"
+                className="flex flex-1 items-center gap-2 bg-transparent outline-none"
                 type="button"
               >
                 <UserRoundPlus className="size-5 text-zinc-400" />
@@ -110,9 +110,9 @@ export function App() {
                 </span>
               </button>
 
-              <div className="w-px bg-zinc-800 h-6"></div>
+              <div className="h-6 w-px bg-zinc-800"></div>
 
-              <button className="bg-lime-300 text-lime-950 rounded-lg px-5 py-2 font-medium flex items-center gap-2 hover:bg-lime-400 transition-colors">
+              <button className="flex items-center gap-2 rounded-lg bg-lime-300 px-5 py-2 font-medium text-lime-950 transition-colors hover:bg-lime-400">
                 Confirmar viagem
                 <ArrowRight className="size-5" />
               </button>
@@ -134,8 +134,8 @@ export function App() {
       </div>
 
       {isGuestsModalOpen && (
-        <div className="z-10 fixed inset-0 bg-black/60 flex items-center justify-center">
-          <div className="w-[640px] rounded-xl py-5 px-6 shadow-shape bg-zinc-900 space-y-5">
+        <div className="fixed inset-0 z-10 flex items-center justify-center bg-black/60">
+          <div className="w-[640px] space-y-5 rounded-xl bg-zinc-900 px-6 py-5 shadow-shape">
             <div className="space-y-2">
               <div className="flex items-center justify-between">
                 <h2 className="text-lg font-semibold">Selecionar convidados</h2>
@@ -152,7 +152,7 @@ export function App() {
               {emailsToInvite.map((email) => (
                 <div
                   key={email}
-                  className="py-1.5 px-2.5 rounded-md bg-zinc-800 flex items-center gap-2"
+                  className="flex items-center gap-2 rounded-md bg-zinc-800 px-2.5 py-1.5"
                 >
                   <span className="text-zinc-300">{email}</span>
                   <button
@@ -165,16 +165,16 @@ export function App() {
               ))}
             </div>
 
-            <div className="w-full h-px bg-zinc-800" />
+            <div className="h-px w-full bg-zinc-800" />
 
             <form
               onSubmit={addNewEmailToInvite}
-              className="p-2.5 bg-zinc-950 border-zinc-800 rounded-lg flex gap-2 items-center"
+              className="flex items-center gap-2 rounded-lg border-zinc-800 bg-zinc-950 p-2.5"
             >
-              <div className=" flex items-center flex-1 gap-2 px-2">
+              <div className="flex flex-1 items-center gap-2 px-2">
                 <AtSign className="size-5 text-zinc-400" />
                 <input
-                  className="bg-transparent text-lg text-zinc-300 flex-1 outline-none"
+                  className="flex-1 bg-transparent text-lg text-zinc-300 outline-none"
                   type="email"
                   value={email}
                   onChange={(event) => setEmail(event.target.value)}
@@ -183,7 +183,7 @@ export function App() {
               </div>
               <button
                 type="submit"
-                className="bg-lime-300 text-lime-950 rounded-lg px-5 py-2 font-medium flex items-center gap-2 hover:bg-lime-400 transition-colors"
+                className="flex items-center gap-2 rounded-lg bg-lime-300 px-5 py-2 font-medium text-lime-950 transition-colors hover:bg-lime-400"
               >
                 Convidar
                 <Plus className="size-5" />
